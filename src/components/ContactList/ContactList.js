@@ -1,9 +1,15 @@
 import { ContactItem } from 'components/ContactItem/ContactItem';
-import { ListWrap } from './ContactList.Styled';
+import { ListWrap, InfoText } from './ContactList.Styled';
 import PropTypes from 'prop-types';
 export const ContactsList = ({ contacts, contactDelete }) => {
   return (
     <ListWrap>
+      {contacts.length === 0 && (
+        <InfoText>
+          Your contact list is empty. Please add a new contact to see it in the
+          saved list.
+        </InfoText>
+      )}
       {contacts.map(contact => (
         <ContactItem
           key={contact.id}

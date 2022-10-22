@@ -5,6 +5,8 @@ import { Filter } from './Filter/Filter';
 import { Notify } from 'notiflix';
 
 import { ContactsList } from './ContactList/ContactList';
+
+const LS_KEY = 'saved_contacts';
 export class App extends Component {
   state = {
     contacts: [
@@ -16,22 +18,42 @@ export class App extends Component {
     filter: '',
   };
 
-  addNewContact = NewContact => {
+  componentDidMount() {
+    let parsedContacts = [];
+
+    if (localStorage.getItem(LS_KEY)) {
+      parsedContacts = JSON.parse(localStorage.getItem(LS_KEY));
+    }
+    if (parsedContacts.length !== 0) {
+      this.setState({ contacts: parsedContacts });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.contacts !== this.state) {
+      const prepareContacts = JSON.stringify(this.state.contacts);
+      localStorage.setItem(LS_KEY, prepareContacts);
+    }
+  }
+
+  addNewContact = newContact => {
     // Сhecking if there is a contact with that name in the state
     for (const contactItem of this.state.contacts) {
-      if (NewContact.name === contactItem.name) {
-        return Notify.warning(`${NewContact.name}, is alredy in contacts!'`);
+      if (newContact.name === contactItem.name) {
+        return Notify.warning(`${newContact.name}, is alredy in contacts!'`);
       }
     }
     //Adding a new contact to the state
     this.setState(prevState => ({
-      contacts: [...prevState.contacts, NewContact],
+      contacts: [...prevState.contacts, newContact],
     }));
-    Notify.success(`Contact ${NewContact.name}, successfully added`);
+    Notify.success(`Contact ${newContact.name}, successfully added`);
   };
+
   changeFilterValue = e => {
     this.setState({ filter: e.currentTarget.value });
   };
+
   getFiltredContacts = () => {
     const { filter, contacts } = this.state;
     const normalizeFilterValue = filter.toLowerCase();
@@ -42,7 +64,6 @@ export class App extends Component {
   };
 
   contactDelete = contactId => {
-    // console.log(contactId);
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
@@ -62,7 +83,7 @@ export class App extends Component {
           color: '#010101',
         }}
       >
-        <SectionTitle title={'Phoneboock'} />
+        <SectionTitle title={'Phonebook'} />
         <ContactForm sendNewContact={this.addNewContact} />
 
         <SectionTitle title={'Contacts'} />
@@ -71,6 +92,7 @@ export class App extends Component {
           value={this.state.filter}
           onChange={this.changeFilterValue}
         />
+
         <ContactsList
           contacts={visibleContacts}
           contactDelete={this.contactDelete}
