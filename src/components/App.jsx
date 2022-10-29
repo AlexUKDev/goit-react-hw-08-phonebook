@@ -77,7 +77,6 @@ export class App extends Component {
           height: '100vh',
           display: 'flex',
           flexDirection: 'column',
-          // justifyContent: 'center',
           alignItems: 'center',
           fontSize: 30,
           color: '#010101',
