@@ -64,9 +64,9 @@ export const App = () => {
   };
 
   const contactDelete = contactId => {
-    setContacts(prevState => ({
-      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
-    }));
+    setContacts(prevContacts =>
+      prevContacts.filter(contact => contact.id !== contactId)
+    );
   };
 
   const visibleContacts = getFiltredContacts();
