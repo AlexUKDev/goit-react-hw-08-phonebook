@@ -18,17 +18,6 @@ export const App = () => {
   );
   const [filter, setFilter] = useState('');
 
-  // useEffect(() => {
-  //   let parsedContacts = [];
-
-  //   if (localStorage.getItem(LS_KEY)) {
-  //     parsedContacts = JSON.parse(localStorage.getItem(LS_KEY));
-  //   }
-  //   if (parsedContacts.length !== 0) {
-  //     setContacts(parsedContacts);
-  //   }
-  // }, []);
-
   useEffect(
     prevContacts => {
       if (prevContacts !== contacts) {
