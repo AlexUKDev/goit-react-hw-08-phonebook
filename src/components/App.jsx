@@ -31,7 +31,6 @@ export const App = () => {
   };
 
   const getFiltredContacts = () => {
-    // const { filter, contacts } = this.state;
     const normalizeFilterValue = filter.toLowerCase();
 
     return contacts.filter(contact =>

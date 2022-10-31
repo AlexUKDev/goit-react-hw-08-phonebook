@@ -1,5 +1,5 @@
-import { TextWrap, Item, DelateBtn } from './ContactItem.Styled';
 import PropTypes from 'prop-types';
+import { TextWrap, Item, DelateBtn } from './ContactItem.Styled';
 
 export const ContactItem = ({ name, number, contactDelete, id }) => {
   return (
