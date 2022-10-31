@@ -1,5 +1,6 @@
 import { LabelWrap, FilterInput } from './Filter.Styled';
 import PropTypes from 'prop-types';
+
 export const Filter = ({ lableText, value, onChange }) => {
   return (
     <LabelWrap>

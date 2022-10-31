@@ -1,6 +1,7 @@
 import { ContactItem } from 'components/ContactItem/ContactItem';
 import { ListWrap, InfoText } from './ContactList.Styled';
 import PropTypes from 'prop-types';
+
 export const ContactsList = ({ contacts, contactDelete }) => {
   return (
     <ListWrap>

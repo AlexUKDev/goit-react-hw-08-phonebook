@@ -1,18 +1,16 @@
 import { useEffect, useState } from 'react';
 import { ContactForm } from './ContactForm/ContactForm';
+import { ContactsList } from './ContactList/ContactList';
 import { SectionTitle } from './SectionTitle/SectionTitle';
+import { defaultContacts } from '../Contacts/Contacts';
+import { getFromLocalStorage, saveToLocalStorage } from '../utils/localStorage';
 import { Filter } from './Filter/Filter';
 import { Notify } from 'notiflix';
-import { testContactsList } from '../testContactsList/testContactsList';
+import { WrapContainer } from './App.Styled';
 
-import { ContactsList } from './ContactList/ContactList';
-
-const LS_KEY = 'saved_contacts';
 export const App = () => {
-  const getFromLocalStorage = JSON.parse(localStorage.getItem(LS_KEY));
-
   const [contacts, setContacts] = useState(
-    getFromLocalStorage ?? testContactsList
+    getFromLocalStorage ?? defaultContacts
   );
   const [filter, setFilter] = useState('');
 
@@ -25,7 +23,6 @@ export const App = () => {
     }
     //Adding a new contact to the state
     setContacts(prevContacts => [...prevContacts, newContact]);
-
     Notify.success(`Contact ${newContact.name}, successfully added`);
   };
 
@@ -51,8 +48,7 @@ export const App = () => {
   useEffect(
     prevContacts => {
       if (prevContacts !== contacts) {
-        const prepareContacts = JSON.stringify(contacts);
-        localStorage.setItem(LS_KEY, prepareContacts);
+        saveToLocalStorage(contacts);
       }
     },
     [contacts]
@@ -60,16 +56,7 @@ export const App = () => {
 
   const visibleContacts = getFiltredContacts();
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        fontSize: 30,
-        color: '#010101',
-      }}
-    >
+    <WrapContainer>
       <SectionTitle title={'Phonebook'} />
       <ContactForm sendNewContact={addNewContact} />
 
@@ -81,6 +68,6 @@ export const App = () => {
       />
 
       <ContactsList contacts={visibleContacts} contactDelete={contactDelete} />
-    </div>
+    </WrapContainer>
   );
 };

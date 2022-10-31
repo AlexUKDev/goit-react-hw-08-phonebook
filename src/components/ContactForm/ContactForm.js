@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { FormWrap, Lable, SubmitBtn, Input } from './ContactForm.Styled';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
+import { FormWrap, Lable, SubmitBtn, Input } from './ContactForm.Styled';
 
 export const ContactForm = ({ sendNewContact }) => {
   const [name, setName] = useState('');

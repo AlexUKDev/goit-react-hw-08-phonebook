@@ -5,7 +5,8 @@ export const FormWrap = styled.form`
   flex-direction: column;
 
   margin-top: 18px;
-  padding: 30px;
+  width: 400px;
+  padding: 45px;
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 8px;
 `;

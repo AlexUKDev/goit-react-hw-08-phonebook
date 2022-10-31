@@ -1,5 +1,6 @@
 import { TextWrap, Item, DelateBtn } from './ContactItem.Styled';
 import PropTypes from 'prop-types';
+
 export const ContactItem = ({ name, number, contactDelete, id }) => {
   return (
     <Item>
