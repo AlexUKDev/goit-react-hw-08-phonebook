@@ -11,7 +11,7 @@ export const FormWrap = styled.form`
   border-radius: 8px;
 `;
 
-export const Lable = styled.label`
+export const Label = styled.label`
   display: flex;
   flex-direction: column;
   font-size: 18px;
