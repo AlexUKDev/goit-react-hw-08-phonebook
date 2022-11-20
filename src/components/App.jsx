@@ -2,8 +2,6 @@
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactsList } from './ContactList/ContactList';
 import { SectionTitle } from './SectionTitle/SectionTitle';
-// import { defaultContacts } from '../Contacts/Contacts';
-// import { getFromLocalStorage, saveToLocalStorage } from '../utils/localStorage';
 import { Filter } from './Filter/Filter';
 
 import { WrapContainer } from './App.Styled';
