@@ -11,8 +11,8 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import { contactsReducer } from '../redux/contacts.Slice';
-import { filterReducer } from '../redux/filter.Slice';
+import { contactsReducer } from './contacts/contactsSlice';
+import { filterReducer } from './filter/filterSlice';
 
 import { LS_KEY } from '../utils/localStorage';
 

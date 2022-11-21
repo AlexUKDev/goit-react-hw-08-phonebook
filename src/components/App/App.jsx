@@ -1,8 +1,8 @@
 // import { useEffect, useState } from 'react';
-import { ContactForm } from './ContactForm/ContactForm';
-import { ContactsList } from './ContactList/ContactList';
-import { SectionTitle } from './SectionTitle/SectionTitle';
-import { Filter } from './Filter/Filter';
+import { ContactForm } from '../ContactForm/ContactForm';
+import { ContactsList } from '../ContactList/ContactList';
+import { SectionTitle } from '../SectionTitle/SectionTitle';
+import { Filter } from '../Filter/Filter';
 
 import { WrapContainer } from './App.Styled';
 
