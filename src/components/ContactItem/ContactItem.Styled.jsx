@@ -5,10 +5,8 @@ export const TextWrap = styled.span`
 `;
 
 export const Item = styled.li`
-  /* display: flex; */
-  /* justify-content: baseline; */
   width: 100%;
-  font-size: 25px;
+  font-size: 20px;
   :not(:last-child) {
     margin-bottom: 10px;
   }

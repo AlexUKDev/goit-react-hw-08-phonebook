@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 
 import PropTypes from 'prop-types';
-import { updateFilterValue } from '../../redux/filter/filterSlice';
+import { updateFilterValue } from 'redux/slices/filterSlice';
 
 import { LabelWrap, FilterInput } from './Filter.Styled';
 
