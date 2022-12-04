@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 
-import { removeContact } from '../../redux/operations/operations';
+import { removeContact } from 'redux/contacts/operations';
 import { TextWrap, Item, DelateBtn } from './ContactItem.Styled';
 
 import PropTypes from 'prop-types';

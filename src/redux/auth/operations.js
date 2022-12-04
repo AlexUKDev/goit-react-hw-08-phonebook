@@ -32,7 +32,6 @@ export const userRegister = createAsyncThunk(
 export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
-    console.log(axios.defaults.baseURL);
     try {
       const response = await axios.post(`${baseURL}/users/login`, credentials);
 

@@ -1,6 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
-
 import { useState } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
 import { selectAllContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
 
@@ -61,7 +61,7 @@ export const ContactForm = () => {
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          title="Name may contain only letters, apostrophe, dash and spaces."
           value={name}
           required
         />
