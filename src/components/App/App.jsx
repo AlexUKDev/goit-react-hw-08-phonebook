@@ -1,20 +1,54 @@
-import { ContactForm } from '../ContactForm/ContactForm';
-import { ContactsList } from '../ContactList/ContactList';
-import { SectionTitle } from '../SectionTitle/SectionTitle';
-import { Filter } from '../Filter/Filter';
+import { useEffect, lazy } from 'react';
+import { useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
 
-import { WrapContainer } from './App.Styled';
+import { Layout } from 'components/Layout/Layout';
+import { PrivateRoute } from 'components/PrivateRoute';
+import { RestrictedRoute } from 'components/RestrictedRoute';
+import { refreshUser } from 'redux/auth/operations';
+import { useAuth } from 'hooks';
+
+const HomePage = lazy(() => import('pages/Home/Home'));
+const RegisterPage = lazy(() => import('pages/Register/Register'));
+const LoginPage = lazy(() => import('pages/Login/Login'));
+const ContactsPage = lazy(() => import('pages/Contacts/Contacts'));
 
 export const App = () => {
-  return (
-    <WrapContainer>
-      <SectionTitle title={'Phonebook'} />
-      <ContactForm />
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
 
-      <SectionTitle title={'Contacts'} />
-      <Filter labelText={'Find contacts by name'} />
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
-      <ContactsList />
-    </WrapContainer>
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={<RegisterPage />}
+            />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+          }
+        />
+      </Route>
+    </Routes>
   );
 };

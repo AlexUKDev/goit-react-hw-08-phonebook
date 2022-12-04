@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
-export const WrapContainer = styled.div`
-  height: 100vh;
+export const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 30;
+  justify-content: center;
 `;
