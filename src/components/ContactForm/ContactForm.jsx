@@ -33,8 +33,6 @@ export const ContactForm = () => {
   const handleFormSubmit = e => {
     e.preventDefault();
 
-    // const { name, number } = e.target.form.elements;
-
     for (const contactItem of contacts) {
       const normalizeStateName = contactItem.name.toLowerCase();
       const normalizeFormName = name.toLowerCase();
@@ -44,10 +42,7 @@ export const ContactForm = () => {
       }
     }
 
-    const newContact = { name, number };
-
-    console.log(newContact);
-    dispatch(addContact(newContact));
+    dispatch(addContact({ name, number }));
 
     resetForm();
   };

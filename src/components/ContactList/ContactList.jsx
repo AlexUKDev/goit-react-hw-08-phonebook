@@ -9,7 +9,7 @@ import {
   selectError,
 } from 'redux/contacts/selectors';
 import { useEffect } from 'react';
-// import { fetchContacts } from 'redux/operations/operations';
+
 import { fetchContacts } from 'redux/contacts/operations';
 
 export const ContactsList = () => {
@@ -48,7 +48,7 @@ export const ContactsList = () => {
           <ContactItem
             key={contact.id}
             name={contact.name}
-            number={contact.phone}
+            number={contact.number}
             id={contact.id}
           />
         ))}
