@@ -7,6 +7,7 @@ export const Form = styled.form`
   justify-content: center;
 
   width: fit-content;
+  margin-top: 30px;
   padding: 20px;
   font-size: 16px;
   border: 1px solid rgba(0, 0, 0, 0.2);

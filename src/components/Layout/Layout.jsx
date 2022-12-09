@@ -7,11 +7,13 @@ import { Wrapper } from './Layout.Styled';
 
 export const Layout = () => {
   return (
-    <Wrapper>
-      <AppBar />
-      <Suspense fallback={null}>
-        <Outlet />
-      </Suspense>
-    </Wrapper>
+    <>
+      <Wrapper>
+        <AppBar />
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
+      </Wrapper>
+    </>
   );
 };

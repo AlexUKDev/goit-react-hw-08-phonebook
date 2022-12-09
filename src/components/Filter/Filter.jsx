@@ -1,11 +1,10 @@
 import { useDispatch } from 'react-redux';
 
-import PropTypes from 'prop-types';
 import { updateFilterValue } from 'redux/contacts/slice';
 
-import { LabelWrap, FilterInput } from './Filter.Styled';
+import TextField from '@mui/material/TextField';
 
-export const Filter = ({ labelText }) => {
+export const Filter = () => {
   const dispatch = useDispatch();
 
   const filterHandler = ({ currentTarget: { value } }) => {
@@ -13,13 +12,14 @@ export const Filter = ({ labelText }) => {
   };
 
   return (
-    <LabelWrap>
-      {labelText}
-      <FilterInput onChange={filterHandler}></FilterInput>
-    </LabelWrap>
+    <>
+      <TextField
+        onChange={filterHandler}
+        id="outlined-basic"
+        label="Search contact by name"
+        variant="outlined"
+        color="success"
+      />
+    </>
   );
-};
-
-Filter.propTypes = {
-  labelText: PropTypes.string.isRequired,
 };

@@ -52,3 +52,8 @@ export const App = () => {
     </Routes>
   );
 };
+
+// <ThemeProvider theme={darkTheme}>
+//   <CssBaseline />
+//   <main>This app is using the dark mode</main>
+// </ThemeProvider>;

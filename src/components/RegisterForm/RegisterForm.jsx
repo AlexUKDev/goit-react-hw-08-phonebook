@@ -55,7 +55,7 @@ export const RegisterForm = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <Label>
-        Username
+        User name
         <Input type="text" name="name" value={name} onChange={handleChange} />
       </Label>
       <Label>
@@ -70,10 +70,14 @@ export const RegisterForm = () => {
       <Label>
         Password
         <Input
-          type="password"
           name="password"
-          value={password}
+          type="password"
           onChange={handleChange}
+          value={password}
+          defaultCountry="UA"
+          region="Europe"
+          international
+          maxLength="16"
         />
       </Label>
       <Btn type="submit">Register</Btn>

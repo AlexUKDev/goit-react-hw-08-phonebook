@@ -1,7 +1,17 @@
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
-import { Wrapper, GreetingText } from 'components/UserMenu/UserMenu.Styled';
+
+import PersonIcon from '@mui/icons-material/Person';
+import {
+  Wrapper,
+  GreetingText,
+  BtnOut,
+  AccentText,
+  IconWrap,
+} from 'components/UserMenu/UserMenu.Styled';
+
+import LogoutIcon from '@mui/icons-material/Logout';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
@@ -13,10 +23,16 @@ export const UserMenu = () => {
 
   return (
     <Wrapper>
-      <GreetingText>Welcome, {user.email}</GreetingText>
-      <button type="button" onClick={logOutHandler}>
-        Logout
-      </button>
+      <IconWrap>
+        <PersonIcon sx={{ fontSize: 30 }} />
+      </IconWrap>
+      <GreetingText>
+        Welcome, <AccentText>{user.name} </AccentText>
+      </GreetingText>
+
+      <BtnOut type="button" onClick={logOutHandler}>
+        <LogoutIcon sx={{ fontSize: 30 }} />
+      </BtnOut>
     </Wrapper>
   );
 };

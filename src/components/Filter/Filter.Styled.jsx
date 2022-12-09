@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const LabelWrap = styled.label`
   display: flex;
   flex-direction: column;
-  font-size: 25px;
+  font-size: 18px;
 `;
 
 export const FilterInput = styled.input`
