@@ -4,15 +4,15 @@ import { AuthNav } from 'components/AuthNav/AuthNav';
 
 import { useAuth } from 'hooks';
 
-import { Heder } from './AppBar.Styled';
+import { NavBar } from './AppBar.Styled';
 
 export const AppBar = () => {
   const { isLoggedIn } = useAuth();
 
   return (
-    <Heder>
+    <NavBar>
       <Navigation />
       {isLoggedIn ? <UserMenu /> : <AuthNav />}
-    </Heder>
+    </NavBar>
   );
 };

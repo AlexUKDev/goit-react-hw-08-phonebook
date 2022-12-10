@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 import styled from 'styled-components';
 
-export const Heder = styled(motion.heder)`
+export const NavBar = styled(motion.div)`
   position: fixed;
   z-index: 10;
   top: 0;

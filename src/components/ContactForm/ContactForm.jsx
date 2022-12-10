@@ -9,14 +9,15 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
-import AddRoundedIcon from '@mui/icons-material/AddRounded';
+import PersonAddAlt1OutlinedIcon from '@mui/icons-material/PersonAddAlt1Outlined';
 
 import { Notify } from 'notiflix';
-// import { Wrapper } from './ContactForm.Styled';
+import { HeadTitle } from 'components/UI/HeadTitle/HeadTitle';
+import { Wrapper } from './ContactForm.Styled';
 
 export const ContactForm = () => {
-  const dispatch = useDispatch();
   const contacts = useSelector(selectAllContacts);
+  const dispatch = useDispatch();
 
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -55,9 +56,11 @@ export const ContactForm = () => {
   };
 
   return (
-    <>
+    <Wrapper>
+      <HeadTitle title={'Create new contact'} />
+
       <Box component="form" onSubmit={handleFormSubmit}>
-        <FormControl sx={{ width: '25ch' }}>
+        <FormControl sx={{ width: '25ch', mt: 1 }}>
           <TextField
             onChange={handleChange}
             label="Name"
@@ -70,6 +73,7 @@ export const ContactForm = () => {
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces."
             value={name}
+            autoComplete="off"
             required
           />
 
@@ -86,6 +90,7 @@ export const ContactForm = () => {
             id="outlined-basic"
             sx={{ mb: 1 }}
             maxLength="16"
+            autoComplete="off"
             required
           />
         </FormControl>
@@ -94,14 +99,14 @@ export const ContactForm = () => {
             type="submit"
             variant="outlined"
             color="success"
-            size="small"
-            endIcon={<AddRoundedIcon />}
+            size="large"
+            endIcon={<PersonAddAlt1OutlinedIcon size="medium" />}
           >
             Add contact
           </Button>
         </Stack>
       </Box>
-    </>
+    </Wrapper>
   );
 };
 

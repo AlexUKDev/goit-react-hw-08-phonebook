@@ -4,20 +4,43 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
+export const InfoText = styled.p`
+  max-width: 500px;
+  margin-top: 30px;
+  font-size: 20px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.75);
+`;
 
-export const ListWrap = styled.ul`
+export const ListWrap = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
 
-  padding: 45px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin-top: 15px;
+  min-width: 500px;
+
   border-radius: 8px;
 `;
 
-export const InfoText = styled.span`
+export const LoadingWrap = styled.div`
   margin-top: 30px;
-  font-size: 14px;
+  display: flex;
+  justify-content: center;
+`;
+
+export const Table = styled.table`
+  background-color: rgba(245, 222, 179, 0.75);
+  border-radius: 8px;
+
+  padding: 10px;
+`;
+
+export const TableHead = styled.th`
   text-align: center;
-  color: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+
+  &.start {
+    text-align: start;
+  }
 `;

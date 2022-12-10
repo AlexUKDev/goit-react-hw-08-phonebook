@@ -1,16 +1,19 @@
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
-// import { Form, Label, Input, Btn } from 'components/LoginForm/LoginForm.Styled';
 
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import FormControl from '@mui/material/FormControl';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+
+import { HeadTitle } from 'components/UI/HeadTitle/HeadTitle';
+import { Wrapper } from 'components/LoginForm/LoginForm.Styled';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = e => {
+  const handleFormSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
     dispatch(
@@ -23,33 +26,40 @@ export const LoginForm = () => {
   };
 
   return (
-    <Stack direction="row" spacing={2}>
-      <Box
-        onSubmit={handleSubmit}
-        component="form"
-        sx={{
-          '& > :not(style)': { m: 1, width: '25ch' },
-        }}
-      >
-        <TextField
-          type="email"
-          name="email"
-          label="Email"
-          variant="filled"
-          color="success"
-        />
-        <TextField
-          type="password"
-          name="password"
-          label="Password"
-          variant="filled"
-          color="success"
-        />
+    <Wrapper>
+      <HeadTitle title={'Log In page'} mb={500} size={30} />
 
-        <Button type="submit" variant="outlined" color="success">
-          Log In
-        </Button>
+      <Box component="form" onSubmit={handleFormSubmit}>
+        <FormControl sx={{ width: '25ch', mt: 1 }}>
+          <TextField
+            type="email"
+            name="email"
+            label="Email"
+            variant="outlined"
+            color="success"
+            sx={{ mb: 1, width: '25ch' }}
+          />
+          <TextField
+            type="password"
+            name="password"
+            label="Password"
+            variant="outlined"
+            color="success"
+            sx={{ mb: 1, width: '25ch' }}
+          />
+        </FormControl>
+        <Stack>
+          <Button
+            type="submit"
+            variant="outlined"
+            color="success"
+            size="large"
+            sx={{ mb: 1 }}
+          >
+            Log In
+          </Button>
+        </Stack>
       </Box>
-    </Stack>
+    </Wrapper>
   );
 };

@@ -12,14 +12,13 @@ export const Filter = () => {
   };
 
   return (
-    <>
-      <TextField
-        onChange={filterHandler}
-        id="outlined-basic"
-        label="Search contact by name"
-        variant="outlined"
-        color="success"
-      />
-    </>
+    <TextField
+      onChange={filterHandler}
+      id="outlined-basic"
+      label="Search by name"
+      variant="outlined"
+      color="success"
+      sx={{ mt: 1, minWidth: 500 }}
+    />
   );
 };

@@ -1,28 +1,38 @@
+import { useEffect } from 'react';
+// useState;
 import { useDispatch, useSelector } from 'react-redux';
-import { ContactItem } from 'components/ContactItem/ContactItem';
+
 import {
   selectAllContacts,
   selectFilteredContacts,
   selectIsLoading,
   selectError,
 } from 'redux/contacts/selectors';
-import { useEffect } from 'react';
-
 import { fetchContacts } from 'redux/contacts/operations';
-import { Filter } from 'components/Filter/Filter';
 
+import { Filter } from 'components/Filter/Filter';
+import { ContactListItem } from 'components/ContactListItem/ContactListItem';
 import CircularProgress from '@mui/material/CircularProgress';
 
-import { ListWrap, InfoText, Wrapper } from './ContactList.Styled';
+import {
+  ListWrap,
+  InfoText,
+  Wrapper,
+  Table,
+  TableHead,
+  LoadingWrap,
+} from './ContactList.Styled';
+import { HeadTitle } from 'components/UI/HeadTitle/HeadTitle';
+// import { Loading } from 'notiflix';
 
-export const ContactsList = () => {
+export const ContactsList = ({ getContactInfo, toggleEditModal }) => {
   const contacts = useSelector(selectAllContacts);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
-  const visibleContacts = useSelector(selectFilteredContacts);
-
   const dispatch = useDispatch();
+
+  const visibleContacts = useSelector(selectFilteredContacts);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -30,28 +40,52 @@ export const ContactsList = () => {
 
   return (
     <Wrapper>
+      <HeadTitle title={'Contacts list'} />
       <Filter />
 
-      {!!(!isLoading && !contacts.length) && (
+      {!contacts.length && !isLoading && (
         <InfoText>
           Your contact list is empty. Please add a new contact to see it in the
           saved list.
         </InfoText>
       )}
 
-      <ListWrap>
-        {isLoading && !error && <CircularProgress color="success" />}
+      {!!(contacts.length && !isLoading) &&
+        (!visibleContacts.length ? (
+          <InfoText>Sorry. No results!</InfoText>
+        ) : (
+          <ListWrap>
+            <Table>
+              <thead>
+                <tr>
+                  <TableHead></TableHead>
+                  <TableHead className="start">Name</TableHead>
+                  <TableHead>Number</TableHead>
+                  <TableHead>Edit</TableHead>
+                  <TableHead>Delate</TableHead>
+                </tr>
+              </thead>
+              <tbody>
+                {visibleContacts.map(({ id, name, number }) => (
+                  <ContactListItem
+                    key={id}
+                    name={name}
+                    number={number}
+                    id={id}
+                    getContactInfo={getContactInfo}
+                    toggleEditModal={toggleEditModal}
+                  />
+                ))}
+              </tbody>
+            </Table>
+          </ListWrap>
+        ))}
 
-        {!isLoading &&
-          visibleContacts.map(contact => (
-            <ContactItem
-              key={contact.id}
-              name={contact.name}
-              number={contact.number}
-              id={contact.id}
-            />
-          ))}
-      </ListWrap>
+      {isLoading && !error && (
+        <LoadingWrap>
+          <CircularProgress color="success" />
+        </LoadingWrap>
+      )}
     </Wrapper>
   );
 };
