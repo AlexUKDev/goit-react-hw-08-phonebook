@@ -141,6 +141,14 @@ export const refreshUser = createAsyncThunk(
       const res = await axios.get(`/users/current`);
       return res.data;
     } catch (error) {
+      if (error.response.status === 401) {
+        resetAuthHeader();
+        Notify.warning(
+          `Your security certificate is not valid. You should login again`,
+          notifySettings
+        );
+      }
+
       if (error.response.status === 500) {
         Notify.warning(
           `Something went wrong on the server. Try again`,
