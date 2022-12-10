@@ -13,7 +13,7 @@ import { NavBar, ToggleBtn } from './AppBar.Styled';
 
 export const AppBar = () => {
   const { isLoggedIn } = useAuth();
-  const [isBarOpen, setIsBarOpen] = useState(true);
+  const [isBarOpen, setIsBarOpen] = useState(false);
 
   const toggleBar = () => setIsBarOpen(!isBarOpen);
 
