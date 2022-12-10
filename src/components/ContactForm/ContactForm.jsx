@@ -109,5 +109,3 @@ export const ContactForm = () => {
     </Wrapper>
   );
 };
-
-// <SubmitBtn type="submit">Add contact</SubmitBtn>;

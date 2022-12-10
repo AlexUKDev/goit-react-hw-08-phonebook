@@ -5,15 +5,17 @@ import { useAuth } from 'hooks';
 import PersonIcon from '@mui/icons-material/Person';
 import {
   Wrapper,
-  GreetingText,
+  GreetingTextLarge,
+  GreetingTextSmall,
   BtnOut,
-  AccentText,
+  AccentTextLarge,
+  AccentTextSmall,
   IconWrap,
 } from 'components/UserMenu/UserMenu.Styled';
 
 import LogoutIcon from '@mui/icons-material/Logout';
 
-export const UserMenu = () => {
+export const UserMenu = ({ isBarOpen }) => {
   const dispatch = useDispatch();
   const { user } = useAuth();
 
@@ -26,9 +28,16 @@ export const UserMenu = () => {
       <IconWrap>
         <PersonIcon sx={{ fontSize: 30 }} />
       </IconWrap>
-      <GreetingText>
-        Welcome, <AccentText>{user.name} </AccentText>
-      </GreetingText>
+
+      {isBarOpen ? (
+        <GreetingTextLarge>
+          Welcome, <AccentTextLarge>{user.name} </AccentTextLarge>
+        </GreetingTextLarge>
+      ) : (
+        <GreetingTextSmall>
+          Welcome, <AccentTextSmall>{user.name} </AccentTextSmall>
+        </GreetingTextSmall>
+      )}
 
       <BtnOut type="button" onClick={logOutHandler}>
         <LogoutIcon sx={{ fontSize: 30 }} />

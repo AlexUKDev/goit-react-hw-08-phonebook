@@ -50,7 +50,6 @@ export const RegisterForm = () => {
     dispatch(userRegister(credentials));
 
     resetForm();
-    // form.reset();
   };
 
   return (

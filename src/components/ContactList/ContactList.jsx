@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-// useState;
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -23,7 +23,6 @@ import {
   LoadingWrap,
 } from './ContactList.Styled';
 import { HeadTitle } from 'components/UI/HeadTitle/HeadTitle';
-// import { Loading } from 'notiflix';
 
 export const ContactsList = ({ getContactInfo, toggleEditModal }) => {
   const contacts = useSelector(selectAllContacts);

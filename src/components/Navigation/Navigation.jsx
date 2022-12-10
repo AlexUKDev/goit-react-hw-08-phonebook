@@ -5,20 +5,31 @@ import { Nav, NavLink } from './Navigation.Styled';
 import RecentActorsRoundedIcon from '@mui/icons-material/RecentActorsRounded';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 
-export const Navigation = () => {
+export const Navigation = ({ isBarOpen }) => {
   const { isLoggedIn } = useAuth();
 
   return (
     <Nav>
-      <NavLink to="/">
-        <HomeRoundedIcon sx={{ fontSize: 30, mr: 1 }} />
-        Home
-      </NavLink>
+      {isBarOpen ? (
+        <NavLink to="/">
+          <HomeRoundedIcon sx={{ fontSize: 30, mr: 1 }} />
+          Home
+        </NavLink>
+      ) : (
+        <NavLink to="/">
+          <HomeRoundedIcon sx={{ fontSize: 30, mr: 1 }} />
+        </NavLink>
+      )}
 
-      {isLoggedIn && (
+      {isLoggedIn && isBarOpen && (
         <NavLink to="/contacts">
           <RecentActorsRoundedIcon sx={{ fontSize: 30, mr: 1 }} />
           Contacts
+        </NavLink>
+      )}
+      {isLoggedIn && !isBarOpen && (
+        <NavLink to="/contacts">
+          <RecentActorsRoundedIcon sx={{ fontSize: 30, mr: 1 }} />
         </NavLink>
       )}
     </Nav>
