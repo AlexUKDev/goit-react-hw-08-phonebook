@@ -38,7 +38,11 @@ export const AppBar = () => {
       </ToggleBtn>
 
       <Navigation isBarOpen={isBarOpen} />
-      {isLoggedIn ? <UserMenu isBarOpen={isBarOpen} /> : <AuthNav />}
+      {isLoggedIn ? (
+        <UserMenu isBarOpen={isBarOpen} />
+      ) : (
+        <AuthNav isBarOpen={isBarOpen} />
+      )}
     </NavBar>
   );
 };
